@@ -8,7 +8,7 @@ class Human(Player):
         super().__init__(sym,n)
 
 
-    def getMove(self, board)->int:
+    def getMove(self, board, turn,playedMoves)->int:
 
         print("Choose a Spot to play!")
         gettingInput = True

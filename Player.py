@@ -15,6 +15,6 @@ class Player(ABC):
         return self.symbol
 
     @abstractmethod
-    def getMove(self, board)->int:
+    def getMove(self, board, turn,playedMoves)->int:
         #should return 3*row+col
         raise NotImplementedError("You need to implement the getMove method!")

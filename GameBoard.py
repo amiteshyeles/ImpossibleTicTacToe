@@ -1,16 +1,17 @@
 from TicTacToeErrors import *
 from GeneralFunctions import *
 from Player import *
-from CPU import *
 
 class GameBoard:
     USER_CHARACTER = "X"
     COMPUTER_CHARACTER = "O"
 
-    def __init__(self):
+    def __init__(self, board=None):
         #self.board = [[" "]*3]*3
-        self.board = [[" "," "," "],[" "," "," "],[" "," "," "]]
-    
+        if board==None:
+            self.board = [[" "," "," "],[" "," "," "],[" "," "," "]]
+        else:
+            self.board=board
     def setSymbols(s1:str, s2:str):
         if s2!=s1:
             USER_CHARACTER = s1
@@ -31,9 +32,9 @@ class GameBoard:
         if self.board[2][0]==self.board[1][1]==self.board[0][2]:
             val = self.board[1][1]
             if val==self.USER_CHARACTER:
-                return 2
+                return 1
             elif val==self.COMPUTER_CHARACTER:
-                return -2
+                return -1
         return 0
 
     def columnWinner(self)->int:
@@ -42,9 +43,9 @@ class GameBoard:
         for c in range(len(self.board)):
             if self.board[0][c]==self.board[1][c]==self.board[2][c]:
                 if self.board[0][c] == self.USER_CHARACTER:
-                    return (c+1)
+                    return 1
                 elif self.board[0][c]==self.COMPUTER_CHARACTER:
-                    return -1*(c+1)
+                    return -1
         return 0
 
 
@@ -54,9 +55,9 @@ class GameBoard:
         for r in range(len(self.board)):
             if self.board[r][0]==self.board[r][1]==self.board[r][2]:
                 if self.board[r][0] == self.USER_CHARACTER:
-                    return (r+1)
+                    return 1
                 elif self.board[r][0]==self.COMPUTER_CHARACTER:
-                    return -1*(r+1)
+                    return -1
         return 0
 
     def isGameOver(self)->bool:
