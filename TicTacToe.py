@@ -24,8 +24,10 @@ class TicTacToe:
 	            gettingNumPlayers = False
 	    return numPlayers
     def modifyTurnOrder(self,players):
-        if randrange(1)==1:
+        if randrange(2)==1:
             players.append(players.pop(0))
+            print("Computer Should Go First")
+
     def playGame(self) -> None:
         player1 = Human("X","Player 1")
         player2  = None
@@ -43,6 +45,7 @@ class TicTacToe:
         playedMoves = []
         while not self.board.isGameOver() and turn<=9:
             self.board.display()
+            print(players[(turn-1)%2].getName()+"'s Turn")
             move = players[(turn-1)%2].getMove(self.board.getBoard(), turn,copy.copy(playedMoves))
             playedMoves.append(move)
             self.board.update(move,players[(turn-1)%2].getSymbol())

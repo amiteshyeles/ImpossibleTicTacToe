@@ -135,12 +135,12 @@ class CPU(Player):
     def getMove(self, board, turn, playedMoves)->int:
         #print("Computer GetMove")
         gBoard = GameBoard(board)
-        gBoard.display()
+        #gBoard.display()
         scoreMove = self.minimax(board,False,0)
         return scoreMove[1]
 
     def __init__(self, sym:str = "O", n:str = "Computer"):
-        super().__init__(sym,"n")
+        super().__init__(sym,n)
         #self.tree = TicTacToeDecisionTree()
         #self.tree.root.setBoard(GameBoard())
         #self.fillGameEndingValues()
